@@ -4,14 +4,14 @@ import "./global/App.module.css"
 
 import { Routes, Route } from '@solidjs/router';
 
-import { createEffect, lazy, onMount } from "solid-js";
+import { createEffect, createSignal, lazy, onMount } from "solid-js";
 import { useGlobalContext } from "./global/store";
 
 import ViewContainer from "./views/ViewContainer";
 const Home = lazy(() => import("./views/Home"));
 
 export default function App() {
-  const { setIsMobile, setScrollPosition } = useGlobalContext();
+  const { setIsMobile, logScroll } = useGlobalContext();
 
   // onMount(() => loadLocalStorage());
   const PageResize = () => {
@@ -26,19 +26,14 @@ export default function App() {
   }
 
   const TrackScroll = () => {
-    const logScroll = (e) => {
-      e.preventDefault();
-      window.scrollY += e.deltaY;
-
-      setScrollPosition(window.scrollY);
-    };
     // window.addEventListener('scroll', logScroll, { passive: false });
-    window.addEventListener('wheel', logScroll, { passive: false })
+    window.addEventListener('wheel', (e) => logScroll(e), { passive: false })
     return () => {
       // window.removeEventListener('scroll', logScroll);
-      window.removeEventListener('wheel', logScroll);
+      window.removeEventListener('wheel', (e) => logScroll(e));
     };
   };
+
 
   createEffect(() => {
     PageResize();

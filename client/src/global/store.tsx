@@ -6,8 +6,11 @@ interface ContextProps {
   setIsMobile: Setter<boolean>,
   prevRoute: Accessor<string>,
   setPrevRoute: Setter<string>,
-  scrollPosition: Accessor<number>,
-  setScrollPosition: Setter<number>,
+  scrollPos: Accessor<number>,
+  setScrollPos: Setter<number>,
+  innerScrollPos: Accessor<number>,
+  setInnerScrollPos: Setter<number>,
+  logScroll: Function,
   apiCall: Function,
   navigate: Function,
 }
@@ -21,8 +24,22 @@ export function GlobalContextProvider(props) {
   
   const [isMobile, setIsMobile]     = createSignal(false);
   const [prevRoute, setPrevRoute]   = createSignal("/");
-  const [scrollPosition, setScrollPosition] = createSignal(0);
+  const [scrollPos, setScrollPos] = createSignal(0);
+  const [innerScrollPos, setInnerScrollPos] = createSignal(0);
 
+  const logScroll = (e) => {
+    console.log(e);
+    // e.preventDefault();
+
+    if (window.scrollY > 100) {
+      setInnerScrollPos(innerScrollPos() + e.deltaY);
+      setScrollPos(innerScrollPos() + e.deltaY);
+    } else {
+      setScrollPos(window.scrollY + e.deltaY);
+      window.scrollTo(0, scrollPos());
+    }
+  }
+  
   const navigate = (params) => {
     setPrevRoute(location.pathname);
     navigateFunc(params);
@@ -53,7 +70,9 @@ export function GlobalContextProvider(props) {
 		<GlobalContext.Provider value={{ 
       isMobile, setIsMobile,
       prevRoute, setPrevRoute,
-      scrollPosition, setScrollPosition,
+      scrollPos, setScrollPos,
+      innerScrollPos, setInnerScrollPos,
+      logScroll,
       apiCall, 
       navigate
     }}>

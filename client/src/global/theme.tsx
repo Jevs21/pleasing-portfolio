@@ -21,7 +21,7 @@ const mainTheme = createTheme({
     // fontFamily: "'Edu SA Beginner', 'Courier New', Roboto, Helvetica, Arial, sans-serif",
     h1: { 
       fontFamily: "Caprasimo",
-      fontSize: "10vw",
+      fontSize: "6rem",
       textAlign: "left",
       color: colors.white,
     },

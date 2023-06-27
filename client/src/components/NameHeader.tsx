@@ -4,7 +4,7 @@ import { createMemo } from "solid-js";
 import { useGlobalContext } from "../global/store";
 
 const NameHeader = () => {
-  const {isMobile, scrollPosition} = useGlobalContext();
+  const {isMobile, scrollPos} = useGlobalContext();
   const paddingLeft = createMemo(() => {
     return 0;
     // return Math.max(15 - Math.floor(scrollPosition() / 2), 0);
@@ -15,17 +15,7 @@ const NameHeader = () => {
   });
 
   const layers = createMemo(() => {
-    const delta = scrollPosition() * 0.2;
-    // const colors = [
-    //   "#c78283", 
-    //   "#f3d9dc", 
-    //   "#46b59b",
-    //   "#017e7f", 
-    //   "#744253", 
-    //   "#560213",
-    //   "#77031b", 
-    //   "#910421", 
-    //   "#ffc43d"];
+    const delta = scrollPos() * 0.2;
     const colors = [
         "#c78283", 
         "#f3d9dc", 
@@ -47,11 +37,7 @@ const NameHeader = () => {
 
 
   return (
-    <StackRowCentered
-      paddingLeft={paddingLeft()}
-      // paddingY={paddingY()}
-      paddingTop={16}
-      paddingBottom={4}>
+    <StackRowCentered height={"100%"}>
       <Typography variant="h1" sx={{
         textShadow: layers()
       }}>Jordan Evans</Typography>
