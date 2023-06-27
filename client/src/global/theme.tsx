@@ -27,33 +27,19 @@ const mainTheme = createTheme({
     },
     h2: {
       fontFamily: "'Work Sans', sans-serif",
-      fontSize: "32px",
-      // fontWeight: 600,
-      // lineHeight: "22px",
-      // letterSpacing: "0em",
+      fontWeight: 500,
+      fontSize: "24px",
       textAlign: "left",
+      cursor: "pointer",
       color: colors.white,
     },
     h3: {
-      fontSize: "22px",
-      fontWeight: 500,
-      lineHeight: "20px",
-      // letter-spacing: 0.10000000149011612px;
-      textAlign: "left",
     },
     h4: {
-      fontWeight: 500
     },
     h5: {
-      fontWeight: 500
     },
     h6: {
-      // Special! For contact form labels
-      fontSize: "26px",
-      fontWeight: 600,
-      lineHeight: "40px",
-      // letter-spacing: 0.10000000149011612px;
-      textAlign: "right",
     },
     subtitle1: {
       fontSize: "18px",
@@ -65,11 +51,11 @@ const mainTheme = createTheme({
     subtitle2: {
     },
     body1: {
-      fontSize: "20px",
-      fontWeight: 500,
-      lineHeight: "20px",
-      letterSpacing: "0em",
+      fontFamily: "'Work Sans', sans-serif",
+      fontSize: "26px",
+      fontWeight: 400,
       textAlign: "left",
+      color: colors.white,
     },
     body2: {
       fontSize: "22px",
