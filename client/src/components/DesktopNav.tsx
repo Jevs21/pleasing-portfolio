@@ -14,7 +14,7 @@ const DesktopNav = () => {
   ];
 
   return (
-    <Grid container item md={3} >
+    <Grid container item md={3}>
       <Stack spacing={1}>
         <Stack>
           {navItems.map((item, i) => 

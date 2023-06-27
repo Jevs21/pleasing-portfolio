@@ -49,8 +49,9 @@ const NameHeader = () => {
   return (
     <StackRowCentered
       paddingLeft={paddingLeft()}
-      paddingY={paddingY()}
-      paddingBottom={6}>
+      // paddingY={paddingY()}
+      paddingTop={16}
+      paddingBottom={4}>
       <Typography variant="h1" sx={{
         textShadow: layers()
       }}>Jordan Evans</Typography>

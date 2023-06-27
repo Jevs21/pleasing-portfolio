@@ -26,12 +26,17 @@ export default function App() {
   }
 
   const TrackScroll = () => {
-    const logScroll = () => {
+    const logScroll = (e) => {
+      e.preventDefault();
+      window.scrollY += e.deltaY;
+
       setScrollPosition(window.scrollY);
     };
-    window.addEventListener('scroll', logScroll);
+    // window.addEventListener('scroll', logScroll, { passive: false });
+    window.addEventListener('wheel', logScroll, { passive: false })
     return () => {
-      window.removeEventListener('scroll', logScroll);
+      // window.removeEventListener('scroll', logScroll);
+      window.removeEventListener('wheel', logScroll);
     };
   };
 
